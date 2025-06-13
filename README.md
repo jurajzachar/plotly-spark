@@ -47,7 +47,7 @@ Plotly.instance()
         .yAxisLabel("volume")
         .build()
     )
-    // specify where to save rendered HTMLa
+    // specify where to save rendered HTML
     .output(Output.builder()
         .renderInBrowser(true)
         .pathToOutputFolder(new File("./target/testoutput"))
