@@ -7,13 +7,19 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Build with Maven
-        run: mvn -B clean package -DskipTests --file pom.xml
+        run: mvn clean package -DskipTests
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
