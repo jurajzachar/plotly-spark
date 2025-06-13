@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>{{figureTitle}}</title>
+    <style>
+        body {
+            background-color: #F1CEBE;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+    <script src="{{ d3JsUrl }}"></script>
+    <script src="{{ plotlyJsUrl }}" charset="utf-8"></script>
+    <script src="./js/load_plotly.js"></script>
+</head>
+<body>
+<div id="myFigure" style="width: 90vw; height: 90vh;"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<script id="csv-data" type="text/csv">{{data}}</script>
+
+<script>
+    plotLargeCsv(
+       {{ xAxisLabel}},
+       {{ yAxisLabels }},
+       //overrides
+       {{ layoutOverrides }},
+       {{ traceOverrides }}
+    );
+</script>
+</body>
+</html>

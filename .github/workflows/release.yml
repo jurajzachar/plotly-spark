@@ -1,0 +1,23 @@
+name: Build and Release JAR
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger only when pushing version tags like v1.0.0
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests --file pom.xml
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
