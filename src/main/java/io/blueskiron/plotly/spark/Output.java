@@ -33,10 +33,17 @@ public final class Output {
     }
   }
 
-  private File createFileStructure() {
+  //visible for testing
+  File createFileStructure() {
     // Check directory existence and type
-    if (!pathToOutputFolder.exists() || !pathToOutputFolder.isDirectory()) {
-      throw new RuntimeException(String.format("'%s' output directory does not exist", pathToOutputFolder));
+    if (!pathToOutputFolder.exists()) {
+      // Try to create the directory if it does not exist
+      if (!pathToOutputFolder.mkdirs()) {
+        throw new RuntimeException(String.format("Failed to create output directory '%s'", pathToOutputFolder));
+      }
+    }
+    if (!pathToOutputFolder.isDirectory()) {
+      throw new RuntimeException(String.format("'%s' is invalid output directory", pathToOutputFolder));
     }
 
     // Check directory writability
