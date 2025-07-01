@@ -35,11 +35,10 @@ convenient support for visual exploration of data—especially compared to Pytho
 ```java
 Plotly.instance()
     //plug in Dataframe
-    .data(
-        Data.builder()
-            .session(spark)
-            .df(df)
-            .build()
+    .data(Data.builder()
+        .session(spark)
+        .df(df)
+        .build()
     )
     // configure X and Y axis
     .figure(Figure.builder()
@@ -61,11 +60,10 @@ Plotly.instance()
 * [Multiple Scatter and Subplots](./src/main/java/examples/MultipleScattersExample.java)
 ```java
 Plotly.instance()
-    .data(
-        Data.builder()
-            .session(spark)
-            .df(df)
-            .build()
+    .data(Data.builder()
+        .session(spark)
+        .df(df)
+        .build()
     )
     .figure(Figure.builder()
         .xAxisLabel("timestamp")
